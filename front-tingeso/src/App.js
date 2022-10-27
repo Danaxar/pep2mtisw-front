@@ -1,24 +1,29 @@
 import React from 'react';
 import './App.css';
-import { BrowserRouter as Router, Route, Routes} from 'react-router-dom';
-import Navbar from './components/navigation/Navbar.js'
-import LoadFile from './views/CargarArchivo';
-import IngresarAutorizaciones from './views/IngresarAutorizaciones';
-import IngresarJustificativo from './views/IngresarJustificativo';
+import { 
+  BrowserRouter, 
+  Route, 
+  Routes,
+} from 'react-router-dom';
+
+import NavbarEjemplo from './components/navigation/Navbar.js'
+// Vistas
 import CalcularSueldos from './views/CalcularSueldos';
+import Home from './views/Home';
+import IngresarDatos from './views/IngresarDatos';
 
 function App() {
   return (
     <div>
-      <Router>
-        <Navbar/>
+      <BrowserRouter>
         <Routes>
-          <Route path='/uploadfile' exact Component={<LoadFile />}/>
-          <Route path='/justificativo/formulario' exact Component={<IngresarJustificativo />}/>
-          <Route path='/autorizacion/formulario' exact Component={<IngresarAutorizaciones />}/>
-          <Route path='/sueldo/planilla' exact Component={<CalcularSueldos />}/>
+          <Route path='/' element={<NavbarEjemplo/>}>
+            <Route path='/' element={<Home />}/>
+            <Route path='uploadfile' element={<IngresarDatos />}/>
+            <Route path='sueldo/planilla' element={<CalcularSueldos />}/>
+          </Route>
         </Routes>
-      </Router>
+      </BrowserRouter>
     </div>
   );
 }
